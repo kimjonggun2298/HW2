@@ -8,7 +8,7 @@ on:
 
 jobs:
   build-and-push-docker-image:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted # <--- ubuntu-latest 에서 self-hosted 로 변경!!
 
     steps:
       - name: Checkout Code
@@ -39,3 +39,16 @@ jobs:
           # 빌드 시간 단축을 위한 GitHub Actions 기반 캐시 사용
           cache-from: type=gha
           cache-to: type=gha,mode=max
+
+      # 기존에 실행중인 컨테이너가 있다면 강제로 삭제하여 포트 8000 충돌 방지
+      - name: Stop and Remove Existing Container
+        run: |
+          if (docker ps -a -q -f name=^fastapi-mlops$) {
+              docker rm -f fastapi-mlops
+          }
+        shell: pwsh
+
+      # Docker Hub에 업로드된 최신 이미지를 가져와 백그라운드(-d) 컨테이너로 띄우기
+      - name: Run New Container
+        run: docker run -d --restart unless-stopped --name fastapi-mlops -p 8000:8000 ${{ secrets.DOCKERHUB_USERNAME }}/mlops-financial-analysis:latest
+        shell: pwsh
