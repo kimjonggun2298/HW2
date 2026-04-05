@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enterprise MLOps Analytics</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Style -->
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <div class="background-elements">
+        <div class="glow-orb orb-1"></div>
+        <div class="glow-orb orb-2"></div>
+    </div>
+
+    <main class="dashboard-container">
+        <header class="dashboard-header glass-panel">
+            <div class="logo">
+                <div class="logo-icon"></div>
+                <h1>Visionary MLOps</h1>
+            </div>
+            <div class="search-section">
+                <input type="text" id="ticker-input" placeholder="Enter Ticker (e.g., AAPL, NVDA, 005930.KS)" value="AAPL" autocomplete="off" spellcheck="false" />
+                <button id="analyze-btn" class="btn-primary">Analyze</button>
+            </div>
+        </header>
+
+        <div id="loading-overlay" class="hidden">
+            <div class="spinner"></div>
+            <p>Running ML Pipeline...</p>
+        </div>
+
+        <div class="content-grid hidden" id="results-container">
+            <section class="chart-section glass-panel">
+                <div class="section-header">
+                    <h2>Stock Trend & 30-Day Forecast</h2>
+                    <span class="badge">Linear Regression</span>
+                </div>
+                <div class="chart-wrapper">
+                    <canvas id="predictionChart"></canvas>
+                </div>
+            </section>
+
+            <section class="summary-section">
+                <div class="summary-card glass-panel">
+                    <h3>Analyzed Ticker</h3>
+                    <div class="card-value ticker-val" id="val-ticker">--</div>
+                    <p class="card-subtitle">Source: yFinance (2 years)</p>
+                </div>
+                <div class="summary-card glass-panel">
+                    <h3>Latest Close Price</h3>
+                    <div class="card-value" id="val-last-price">--</div>
+                    <p class="card-subtitle" id="val-last-date">--</p>
+                </div>
+                <div class="summary-card glass-panel">
+                    <h3>30-Day Forecast</h3>
+                    <div class="card-value" id="val-forecast-price">--</div>
+                    <p class="card-subtitle trend-indicator" id="val-trend">--</p>
+                </div>
+            </section>
+        </div>
+        
+        <div class="error-panel glass-panel hidden" id="error-container">
+            <h3 id="error-title">Error</h3>
+            <p id="error-message">Could not fetch data.</p>
+        </div>
+    </main>
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Custom logic -->
+    <script src="/static/main.js"></script>
+</body>
+</html>
