@@ -68,7 +68,14 @@ document.addEventListener("DOMContentLoaded", () => {
             trendEl.className = "card-subtitle trend-down";
         }
 
+        // Render Chart
         renderChart(data);
+
+        // Render AI Guideline
+        if (data.guideline) {
+            document.getElementById("val-guideline").textContent = data.guideline;
+            document.getElementById("guideline-container").classList.remove("hidden");
+        }
 
         // Show the results container smoothly
         resultsContainer.classList.remove("hidden");

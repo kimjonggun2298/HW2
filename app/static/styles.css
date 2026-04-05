@@ -112,6 +112,7 @@ body {
     letter-spacing: -0.5px;
     background: linear-gradient(to right, #fff, #94a3b8);
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
@@ -329,4 +330,18 @@ body {
     .search-section {
         max-width: none;
     }
+}
+
+/* Guideline Panel */
+.guideline-panel {
+    padding: 1.5rem 2rem;
+    margin-top: 1rem;
+    animation: fadeIn 0.8s ease;
+}
+
+.guideline-text {
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: var(--text-primary);
+    white-space: pre-wrap;
 }

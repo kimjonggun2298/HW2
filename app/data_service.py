@@ -1,9 +1,9 @@
 import yfinance as yf
 import pandas as pd
 
-def fetch_historical_data(ticker: str, period: str = "2y") -> pd.DataFrame:
+def fetch_historical_data(ticker: str, period: str = "4y") -> pd.DataFrame:
     """
-    Fetches historical stock prices using yfinance.
+    Fetches 4 years of historical stock prices using yfinance.
     """
     stock = yf.Ticker(ticker)
     hist = stock.history(period=period)
