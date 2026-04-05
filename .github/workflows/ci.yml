@@ -50,5 +50,7 @@ jobs:
 
       # Docker Hub에 업로드된 최신 이미지를 가져와 백그라운드(-d) 컨테이너로 띄우기
       - name: Run New Container
-        run: docker run -d --restart unless-stopped --name fastapi-mlops -p 8000:8000 ${{ secrets.DOCKERHUB_USERNAME }}/mlops-financial-analysis:latest
+        run: |
+          docker pull ${{ secrets.DOCKERHUB_USERNAME }}/mlops-financial-analysis:latest
+          docker run -d --restart unless-stopped --name fastapi-mlops -p 8000:8000 ${{ secrets.DOCKERHUB_USERNAME }}/mlops-financial-analysis:latest
         shell: powershell
