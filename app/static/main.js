@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
     const tickerInput = document.getElementById("ticker-input");
     const analyzeBtn = document.getElementById("analyze-btn");
-    
+
     const loadingOverlay = document.getElementById("loading-overlay");
     const resultsContainer = document.getElementById("results-container");
     const errorContainer = document.getElementById("error-container");
@@ -45,21 +45,21 @@ document.addEventListener("DOMContentLoaded", () => {
     function renderDashboard(data) {
         // Update Summary Cards
         document.getElementById("val-ticker").textContent = data.ticker.toUpperCase();
-        
+
         const lastPrice = data.last_closing_price;
         document.getElementById("val-last-price").textContent = formatCurrency(lastPrice);
         document.getElementById("val-last-date").textContent = `As of ${data.last_closing_date}`;
 
         const forecastData = data.future_prediction;
         const lastForecastPrice = forecastData[forecastData.length - 1].predicted_price;
-        
+
         document.getElementById("val-forecast-price").textContent = formatCurrency(lastForecastPrice);
-        
+
         // Calculate Trend percentage
         const diff = lastForecastPrice - lastPrice;
         const percent = (diff / lastPrice) * 100;
         const trendEl = document.getElementById("val-trend");
-        
+
         if (diff > 0) {
             trendEl.textContent = `+${formatCurrency(diff)} (+${percent.toFixed(2)}%)`;
             trendEl.className = "card-subtitle trend-up";
@@ -69,14 +69,14 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         renderChart(data);
-        
+
         // Show the results container smoothly
         resultsContainer.classList.remove("hidden");
     }
 
     function renderChart(data) {
         const ctx = document.getElementById("predictionChart").getContext("2d");
-        
+
         if (predictionChart) {
             predictionChart.destroy();
         }
@@ -127,7 +127,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         titleFont: { size: 14, weight: 'bold' },
                         bodyFont: { size: 14 },
                         callbacks: {
-                            label: function(context) {
+                            label: function (context) {
                                 return `Price: ${formatCurrency(context.parsed.y)}`;
                             }
                         }
@@ -140,9 +140,9 @@ document.addEventListener("DOMContentLoaded", () => {
                     },
                     y: {
                         grid: { color: 'rgba(255, 255, 255, 0.05)', drawBorder: false },
-                        ticks: { 
+                        ticks: {
                             color: '#94a3b8',
-                            callback: function(value) { return formatCurrency(value); }
+                            callback: function (value) { return formatCurrency(value); }
                         }
                     }
                 },

@@ -185,7 +185,9 @@ body {
 }
 
 @keyframes spin {
-    to { transform: rotate(360deg); }
+    to {
+        transform: rotate(360deg);
+    }
 }
 
 /* Content Grid */
@@ -197,8 +199,15 @@ body {
 }
 
 @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* Chart */
@@ -305,7 +314,7 @@ body {
     .content-grid {
         grid-template-columns: 1fr;
     }
-    
+
     .chart-wrapper {
         min-height: 300px;
     }
@@ -316,6 +325,7 @@ body {
         flex-direction: column;
         align-items: stretch;
     }
+
     .search-section {
         max-width: none;
     }

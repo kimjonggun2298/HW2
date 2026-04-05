@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,6 +12,7 @@
     <!-- Style -->
     <link rel="stylesheet" href="/static/styles.css">
 </head>
+
 <body>
     <div class="background-elements">
         <div class="glow-orb orb-1"></div>
@@ -24,7 +26,8 @@
                 <h1>Visionary MLOps</h1>
             </div>
             <div class="search-section">
-                <input type="text" id="ticker-input" placeholder="Enter Ticker (e.g., AAPL, NVDA, 005930.KS)" value="AAPL" autocomplete="off" spellcheck="false" />
+                <input type="text" id="ticker-input" placeholder="Enter Ticker (e.g., AAPL, NVDA, 005930.KS)"
+                    value="AAPL" autocomplete="off" spellcheck="false" />
                 <button id="analyze-btn" class="btn-primary">Analyze</button>
             </div>
         </header>
@@ -63,7 +66,7 @@
                 </div>
             </section>
         </div>
-        
+
         <div class="error-panel glass-panel hidden" id="error-container">
             <h3 id="error-title">Error</h3>
             <p id="error-message">Could not fetch data.</p>
@@ -75,4 +78,5 @@
     <!-- Custom logic -->
     <script src="/static/main.js"></script>
 </body>
+
 </html>
