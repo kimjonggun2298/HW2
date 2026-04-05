@@ -46,9 +46,9 @@ jobs:
           if (docker ps -a -q -f name=^fastapi-mlops$) {
               docker rm -f fastapi-mlops
           }
-        shell: pwsh
+        shell: powershell
 
       # Docker Hub에 업로드된 최신 이미지를 가져와 백그라운드(-d) 컨테이너로 띄우기
       - name: Run New Container
         run: docker run -d --restart unless-stopped --name fastapi-mlops -p 8000:8000 ${{ secrets.DOCKERHUB_USERNAME }}/mlops-financial-analysis:latest
-        shell: pwsh
+        shell: powershell
